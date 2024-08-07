@@ -22,7 +22,7 @@ TEST(PerspectiveFrustumLhTests, PerspectiveProjectionMatrix) {
     EXPECT_EQ(result, expected);
 }
 
-TEST(PerspectiveFrustumLhTests, PerspectiveProjectionMapsLeftToNegativeOneInNDC) {
+TEST(PerspectiveFrustumLhTests, PerspectiveProjectionMapsLeftToNegativeOneInClipSpace) {
     float left = -4.0f;
     float right = 4.0f;
     float bottom = -2.0f;
@@ -38,7 +38,7 @@ TEST(PerspectiveFrustumLhTests, PerspectiveProjectionMapsLeftToNegativeOneInNDC)
     EXPECT_FLOAT_EQ(result, expected);
 }
 
-TEST(PerspectiveFrustumLhTests, PerspectiveProjectionMapsRightToPositiveOneInNDC) {
+TEST(PerspectiveFrustumLhTests, PerspectiveProjectionMapsRightToPositiveOneInClipSpace) {
     float left = -4.0f;
     float right = 4.0f;
     float bottom = -2.0f;
@@ -54,7 +54,7 @@ TEST(PerspectiveFrustumLhTests, PerspectiveProjectionMapsRightToPositiveOneInNDC
     EXPECT_FLOAT_EQ(result, expected);
 }
 
-TEST(PerspectiveFrustumLhTests, PerspectiveProjectionBottomInNDC) {
+TEST(PerspectiveFrustumLhTests, PerspectiveProjectionBottomInClipSpace) {
     float left = -4.0f;
     float right = 4.0f;
     float bottom = -2.0f;
@@ -70,7 +70,7 @@ TEST(PerspectiveFrustumLhTests, PerspectiveProjectionBottomInNDC) {
     EXPECT_FLOAT_EQ(result, expected);
 }
 
-TEST(PerspectiveFrustumLhTests, PerspectiveProjectionMapsTopToPositiveOneInNDC) {
+TEST(PerspectiveFrustumLhTests, PerspectiveProjectionMapsTopToPositiveOneInClipSpace) {
     float left = -4.0f;
     float right = 4.0f;
     float bottom = -2.0f;
@@ -86,7 +86,7 @@ TEST(PerspectiveFrustumLhTests, PerspectiveProjectionMapsTopToPositiveOneInNDC) 
     EXPECT_FLOAT_EQ(result, expected);
 }
 
-TEST(PerspectiveFrustumLhTests, PerspectiveProjectionMapsPositiveNearToZeroInNDC) {
+TEST(PerspectiveFrustumLhTests, PerspectiveProjectionMapsPositiveNearToZeroInClipSpace) {
     float left = -4.0f;
     float right = 4.0f;
     float bottom = -2.0f;
@@ -102,7 +102,7 @@ TEST(PerspectiveFrustumLhTests, PerspectiveProjectionMapsPositiveNearToZeroInNDC
     EXPECT_FLOAT_EQ(result, expected);
 }
 
-TEST(PerspectiveFrustumLhTests, PerspectiveProjectionMapsPositiveFarToPositiveOneInNDC) {
+TEST(PerspectiveFrustumLhTests, PerspectiveProjectionMapsPositiveFarToPositiveOneInClipSpace) {
     float left = -4.0f;
     float right = 4.0f;
     float bottom = -2.0f;

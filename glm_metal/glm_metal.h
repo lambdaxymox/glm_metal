@@ -1,5 +1,5 @@
-#ifndef GLM_METAL_H
-#define GLM_METAL_H
+#ifndef _GLM_METAL_H
+#define _GLM_METAL_H
 
 #include <glm/vec3.hpp>
 #include <glm/vec4.hpp>
@@ -381,4 +381,4 @@ namespace glm_metal {
     glm::mat4x4 perspective_frustum_lh(float left, float right, float bottom, float top, float near, float far);
 }
 
-#endif /* GLM_METAL_H */
+#endif // _GLM_METAL_H

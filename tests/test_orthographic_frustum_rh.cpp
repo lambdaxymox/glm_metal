@@ -22,7 +22,7 @@ TEST(OrthographicFrustumRhTests, OrthographicProjectionMatrix) {
     EXPECT_EQ(result, expected);
 }
 
-TEST(OrthographicFrustumRhTests, OrthographicProjectionMapsLeftToNegativeOneInNDC) {
+TEST(OrthographicFrustumRhTests, OrthographicProjectionMapsLeftToNegativeOneInClipSpace) {
     float left = -4.0f;
     float right = 4.0f;
     float bottom = -2.0f;
@@ -38,7 +38,7 @@ TEST(OrthographicFrustumRhTests, OrthographicProjectionMapsLeftToNegativeOneInND
     EXPECT_FLOAT_EQ(result, expected);
 }
 
-TEST(OrthographicFrustumRhTests, OrthographicProjectionMapsRightToPositiveOneInNDC) {
+TEST(OrthographicFrustumRhTests, OrthographicProjectionMapsRightToPositiveOneInClipSpace) {
     float left = -4.0f;
     float right = 4.0f;
     float bottom = -2.0f;
@@ -54,7 +54,7 @@ TEST(OrthographicFrustumRhTests, OrthographicProjectionMapsRightToPositiveOneInN
     EXPECT_FLOAT_EQ(result, expected);
 }
 
-TEST(OrthographicFrustumRhTests, OrthographicProjectionMapsBottomToNegativeOneInNDC) {
+TEST(OrthographicFrustumRhTests, OrthographicProjectionMapsBottomToNegativeOneInClipSpace) {
     float left = -4.0f;
     float right = 4.0f;
     float bottom = -2.0f;
@@ -70,7 +70,7 @@ TEST(OrthographicFrustumRhTests, OrthographicProjectionMapsBottomToNegativeOneIn
     EXPECT_FLOAT_EQ(result, expected);
 }
 
-TEST(OrthographicFrustumRhTests, OrthographicProjectionMapsTopToPositiveOneInNDC) {
+TEST(OrthographicFrustumRhTests, OrthographicProjectionMapsTopToPositiveOneInClipSpace) {
     float left = -4.0f;
     float right = 4.0f;
     float bottom = -2.0f;
@@ -86,7 +86,7 @@ TEST(OrthographicFrustumRhTests, OrthographicProjectionMapsTopToPositiveOneInNDC
     EXPECT_FLOAT_EQ(result, expected);
 }
 
-TEST(OrthographicFrustumRhTests, OrthographicProjectionMapsPositiveNearToZeroInNDC) {
+TEST(OrthographicFrustumRhTests, OrthographicProjectionMapsPositiveNearToZeroInClipSpace) {
     float left = -4.0f;
     float right = 4.0f;
     float bottom = -2.0f;
@@ -102,7 +102,7 @@ TEST(OrthographicFrustumRhTests, OrthographicProjectionMapsPositiveNearToZeroInN
     EXPECT_FLOAT_EQ(result, expected);
 }
 
-TEST(OrthographicFrustumRhTests, OrthographicProjectionMapsPositiveFarToPositiveOneInNDC) {
+TEST(OrthographicFrustumRhTests, OrthographicProjectionMapsPositiveFarToPositiveOneInClipSpace) {
     float left = -4.0f;
     float right = 4.0f;
     float bottom = -2.0f;

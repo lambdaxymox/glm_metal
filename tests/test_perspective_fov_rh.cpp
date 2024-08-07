@@ -20,7 +20,7 @@ TEST(PerspectiveFovRhTests, PerspectiveProjectionMatrix) {
     EXPECT_EQ(result, expected);
 }
 
-TEST(PerspectiveFovRhTests, PerspectiveProjectionMapsLeftToNegativeOneInNDC) {
+TEST(PerspectiveFovRhTests, PerspectiveProjectionMapsLeftToNegativeOneInClipSpace) {
     float fovyRadians = glm::pi<float>() / 2.0f;
     float aspectRatio = 4.0f / 3.0f;
     float near = 1.0f;
@@ -35,7 +35,7 @@ TEST(PerspectiveFovRhTests, PerspectiveProjectionMapsLeftToNegativeOneInNDC) {
     EXPECT_FLOAT_EQ(result, expected);
 }
 
-TEST(PerspectiveFovRhTests, PerspectiveProjectionMapsRightToPositiveOneInNDC) {
+TEST(PerspectiveFovRhTests, PerspectiveProjectionMapsRightToPositiveOneInClipSpace) {
     float fovyRadians = glm::pi<float>() / 2.0f;
     float aspectRatio = 4.0f / 3.0f;
     float near = 1.0f;
@@ -50,7 +50,7 @@ TEST(PerspectiveFovRhTests, PerspectiveProjectionMapsRightToPositiveOneInNDC) {
     EXPECT_FLOAT_EQ(result, expected);
 }
 
-TEST(PerspectiveFovRhTests, PerspectiveProjectionMapsBottomToNegativeOneInNDC) {
+TEST(PerspectiveFovRhTests, PerspectiveProjectionMapsBottomToNegativeOneInClipSpace) {
     float fovyRadians = glm::pi<float>() / 2.0f;
     float aspectRatio = 4.0f / 3.0f;
     float near = 1.0f;
@@ -65,7 +65,7 @@ TEST(PerspectiveFovRhTests, PerspectiveProjectionMapsBottomToNegativeOneInNDC) {
     EXPECT_FLOAT_EQ(result, expected);
 }
 
-TEST(PerspectiveFovRhTests, PerspectiveProjectionMapsTopToPositiveOneInNDC) {
+TEST(PerspectiveFovRhTests, PerspectiveProjectionMapsTopToPositiveOneInClipSpace) {
     float fovyRadians = glm::pi<float>() / 2.0f;
     float aspectRatio = 4.0f / 3.0f;
     float near = 1.0f;
@@ -80,7 +80,7 @@ TEST(PerspectiveFovRhTests, PerspectiveProjectionMapsTopToPositiveOneInNDC) {
     EXPECT_FLOAT_EQ(result, expected);
 }
 
-TEST(PerspectiveFovRhTests, PerspectiveProjectionMapsPositiveNearToZeroInNDC) {
+TEST(PerspectiveFovRhTests, PerspectiveProjectionMapsPositiveNearToZeroInClipSpace) {
     float fovyRadians = glm::pi<float>() / 2.0f;
     float aspectRatio = 4.0f / 3.0f;
     float near = 1.0f;
@@ -94,7 +94,7 @@ TEST(PerspectiveFovRhTests, PerspectiveProjectionMapsPositiveNearToZeroInNDC) {
     EXPECT_FLOAT_EQ(result, expected);
 }
 
-TEST(PerspectiveFovRhTests, PerspectiveProjectionMapsPositiveFarToPositiveOneInNDC) {
+TEST(PerspectiveFovRhTests, PerspectiveProjectionMapsPositiveFarToPositiveOneInClipSpace) {
     float fovyRadians = glm::pi<float>() / 2.0f;
     float aspectRatio = 4.0f / 3.0f;
     float near = 1.0f;

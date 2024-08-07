@@ -22,7 +22,7 @@ TEST(PerspectiveFrustumRhTests, PerspectiveProjectionMatrix) {
     EXPECT_EQ(result, expected);
 }
 
-TEST(PerspectiveFrustumRhTests, PerspectiveProjectionMapsLeftToNegativeOneInNDC) {
+TEST(PerspectiveFrustumRhTests, PerspectiveProjectionMapsLeftToNegativeOneInClipSpace) {
     float left = -4.0f;
     float right = 4.0f;
     float bottom = -2.0f;
@@ -38,7 +38,7 @@ TEST(PerspectiveFrustumRhTests, PerspectiveProjectionMapsLeftToNegativeOneInNDC)
     EXPECT_FLOAT_EQ(result, expected);
 }
 
-TEST(PerspectiveFrustumRhTests, PerspectiveProjectionMapsRightToPositiveOneInNDC) {
+TEST(PerspectiveFrustumRhTests, PerspectiveProjectionMapsRightToPositiveOneInClipSpace) {
     float left = -4.0f;
     float right = 4.0f;
     float bottom = -2.0f;
@@ -54,7 +54,7 @@ TEST(PerspectiveFrustumRhTests, PerspectiveProjectionMapsRightToPositiveOneInNDC
     EXPECT_FLOAT_EQ(result, expected);
 }
 
-TEST(PerspectiveFrustumRhTests, PerspectiveProjectionBottomInNDC) {
+TEST(PerspectiveFrustumRhTests, PerspectiveProjectionBottomInClipSpace) {
     float left = -4.0f;
     float right = 4.0f;
     float bottom = -2.0f;
@@ -70,7 +70,7 @@ TEST(PerspectiveFrustumRhTests, PerspectiveProjectionBottomInNDC) {
     EXPECT_FLOAT_EQ(result, expected);
 }
 
-TEST(PerspectiveFrustumRhTests, PerspectiveProjectionTopInNDC) {
+TEST(PerspectiveFrustumRhTests, PerspectiveProjectionTopInClipSpace) {
     float left = -4.0f;
     float right = 4.0f;
     float bottom = -2.0f;
@@ -86,7 +86,7 @@ TEST(PerspectiveFrustumRhTests, PerspectiveProjectionTopInNDC) {
     EXPECT_FLOAT_EQ(result, expected);
 }
 
-TEST(PerspectiveFrustumRhTests, PerspectiveProjectionMapsNegativeNearToZeroInNDC) {
+TEST(PerspectiveFrustumRhTests, PerspectiveProjectionMapsNegativeNearToZeroInClipSpace) {
     float left = -4.0f;
     float right = 4.0f;
     float bottom = -2.0f;
@@ -102,7 +102,7 @@ TEST(PerspectiveFrustumRhTests, PerspectiveProjectionMapsNegativeNearToZeroInNDC
     EXPECT_FLOAT_EQ(result, expected);
 }
 
-TEST(PerspectiveFrustumRhTests, PerspectiveProjectionMapsNegativeFarToPositiveOneInNDC) {
+TEST(PerspectiveFrustumRhTests, PerspectiveProjectionMapsNegativeFarToPositiveOneInClipSpace) {
     float left = -4.0f;
     float right = 4.0f;
     float bottom = -2.0f;
