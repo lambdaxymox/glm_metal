@@ -11,7 +11,7 @@
 namespace glm_metal {
     /// @brief Construct a new orthographic projection transformation mapping from 
     /// an eye space with a right-handed coordinate system to a clip space with a 
-    /// left-handed coordinate coordinate system compatible with Metal's normalized 
+    /// left-handed coordinate system compatible with Metal's normalized 
     /// device coordinates.
     ///
     /// @details The source eye space coordinate system is a right-handed coordinate 
@@ -25,18 +25,22 @@ namespace glm_metal {
     /// @li The clip space `x-axis` faces right.
     /// @li The clip space `y-axis` faces up.
     /// @li The clip space `z-axis` faces the camera forward direction.
-    /// In particular, we map the eye space `z-axis` to the clip space `z-axis` by
-    /// changing the sign of the eye space `z` coordinate. The transformation maps 
-    /// the eye space volume `[left, right] x [bottom, top] x [-far, -near]` to 
-    /// the normalized device coordinates `[-1, -1] x [-1, 1] x [0, 1]`. The projection
-    /// matrix is given by
+    /// The transformation maps the eye space volume 
+    /// `[left, right] x [bottom, top] x [-far, -near]` to the clip space that maps to 
+    /// the normalized device coordinates `[-1, -1] x [-1, 1] x [0, 1]` under
+    /// division by the `w-component`.
+    ///
+    /// The projection matrix is given by
+    ///
     /// @code{.unparsed}
     /// [ m[0, 0]  0        0        m[3, 0] ]
     /// [ 0        m[1, 1]  0        m[3, 1] ]
     /// [ 0        0        m[2, 2]  m[3, 2] ]
     /// [ 0        0        0        1       ]
     /// @endcode
+    ///
     /// where
+    ///
     /// @code{.unparsed}
     /// m[0, 0] ==  2 / (right - left)
     /// m[3, 0] == -(right + left) / (right - left)
@@ -45,6 +49,7 @@ namespace glm_metal {
     /// m[2, 2] == -1 / (far - near)
     /// m[3, 2] == -near / (far - near)
     /// @endcode
+    ///
     /// where the matrix entries are indexed in column-major order. The input 
     /// parameters satisfy the following pre-conditions to generate a valid 
     /// orthographic projection matrix.
@@ -73,7 +78,7 @@ namespace glm_metal {
 
     /// @brief Construct a new orthographic projection transformation mapping from 
     /// an eye space with a left-handed coordinate system to a clip space with a 
-    /// left-handed coordinate coordinate system compatible with Metal's normalized 
+    /// left-handed coordinate system compatible with Metal's normalized 
     /// device coordinates.
     ///
     /// @details The source eye space coordinate system is a left-handed coordinate 
@@ -87,15 +92,21 @@ namespace glm_metal {
     /// @li The clip space `y-axis` faces up.
     /// @li The clip space `z-axis` faces the camera forward direction.
     /// The transformation maps the eye space volume 
-    /// `[left, right] x [bottom, top] x [near, far]` to the normalized device coordinates
-    /// `[-1, -1] x [-1, 1] x [0, 1]`. The projection matrix is given by
+    /// `[left, right] x [bottom, top] x [near, far]` to the clip space that maps to
+    /// the normalized device coordinates `[-1, -1] x [-1, 1] x [0, 1]` under
+    /// division by the `w-component`. 
+    ///
+    /// The projection matrix is given by
+    ///
     /// @code{.unparsed}
     /// [ m[0, 0]  0        0        m[3, 0] ]
     /// [ 0        m[1, 1]  0        m[3, 1] ]
     /// [ 0        0        m[2, 2]  m[3, 2] ]
     /// [ 0        0        0        1       ]
     /// @endcode
+    ///
     /// where
+    ///
     /// @code{.unparsed}
     /// m[0, 0] ==  2 / (right - left)
     /// m[3, 0] == -(right + left) / (right - left)
@@ -104,6 +115,7 @@ namespace glm_metal {
     /// m[2, 2] ==  1 / (far - near)
     /// m[3, 2] == -near / (far - near)
     /// @endcode
+    ///
     /// where the matrix entries are indexed in column-major order. The input 
     /// parameters satisfy the following pre-conditions to generate a valid 
     /// orthographic projection matrix.
@@ -132,7 +144,7 @@ namespace glm_metal {
 
     /// @brief Construct a new perspective field of view projection transformation 
     /// mapping from an eye space with a right-handed coordinate system to a clip space 
-    /// with a left-handed coordinate coordinate system compatible with Metal's 
+    /// with a left-handed coordinate system compatible with Metal's 
     /// normalized device coordinates.
     ///
     /// @details The source eye space coordinate system is a right-handed coordinate 
@@ -152,27 +164,35 @@ namespace glm_metal {
     /// field of view angle `fovyRadians` and the aspect ratio `aspectRatio`. The 
     /// aspect ratio `aspectRatio` is the ratio of the width of the camera viewport to 
     /// the height of the camera viewport. Here
+    ///
     /// @code{.unparsed} 
     /// tan(fovyRadians) == top / near
     /// aspectRatio == right / top
     /// @endcode
+    ///
     /// The transformation maps the eye space frustum volume contained in 
-    /// `[-right, right] x [-top, top] x [-far, -near]` to the normalized device 
-    /// coordinates `[-1, -1] x [-1, 1] x [0, 1]`. The projection matrix is given 
-    /// by
+    /// `[-right, right] x [-top, top] x [-far, -near]` to the clip space that maps to
+    /// the normalized device coordinates `[-1, -1] x [-1, 1] x [0, 1]` under
+    /// division by the `w-component`. 
+    ///
+    /// The projection matrix is given by
+    ///
     /// @code{.unparsed}
     /// [ m[0, 0]  0         0        0       ]
     /// [ 0        m[1, 1]   0        0       ]
     /// [ 0        0         m[2, 2]  m[3, 2] ]
     /// [ 0        0        -1        0       ]
     /// @endcode
+    ///
     /// where
+    ///
     /// @code{.unparsed}
     /// m[0, 0] ==  1 / (aspectRatio * tan(fovy / 2))
     /// m[1, 1] ==  1 / tan(fovy / 2)
     /// m[2, 2] == -far / (far - near)
     /// m[3, 2] == -(far * near) / (far - near)
     /// @endcode
+    ///
     /// where the matrix entries are indexed in column-major order. The input 
     /// parameters satisfy the following pre-conditions to generate a valid 
     /// perspective projection matrix.
@@ -197,7 +217,7 @@ namespace glm_metal {
 
     /// @brief Construct a new perspective field of view projection transformation 
     /// mapping from an eye space with a left-handed coordinate system to a clip space 
-    /// with a left-handed coordinate coordinate system compatible with Metal's 
+    /// with a left-handed coordinate system compatible with Metal's 
     /// normalized device coordinates.
     ///
     /// @details The source eye space coordinate system is a left-handed coordinate 
@@ -216,27 +236,35 @@ namespace glm_metal {
     /// field of view angle `fovyRadians` and the aspect ratio `aspectRatio`. The 
     /// aspect ratio `aspectRatio` is the ratio of the width of the camera viewport to 
     /// the height of the camera viewport. Here
+    ///
     /// @code{.unparsed} 
     /// tan(fovyRadians) == top / near
     /// aspectRatio == right / top
     /// @endcode
+    ///
     /// The transformation maps the eye space frustum volume contained in 
-    /// `[-right, right] x [-top, top] x [near, far]` to the normalized device 
-    /// coordinates `[-1, -1] x [-1, 1] x [0, 1]`. The projection matrix is given 
-    /// by
+    /// `[-right, right] x [-top, top] x [near, far]` to the clip space that maps to 
+    /// the normalized device coordinates `[-1, -1] x [-1, 1] x [0, 1]` under
+    /// division by the `w-component`. 
+    ///
+    /// The projection matrix is given by
+    ///
     /// @code{.unparsed}
     /// [ m[0, 0]  0        0        0       ]
     /// [ 0        m[1, 1]  0        0       ]
     /// [ 0        0        m[2, 2]  m[3, 2] ]
     /// [ 0        0        1        0       ]
     /// @endcode
+    ///
     /// where
+    ///
     /// @code{.unparsed}
     /// m[0, 0] ==  1 / (aspectRatio * tan(fovy / 2))
     /// m[1, 1] ==  1 / tan(fovy / 2)
     /// m[2, 2] ==  far / (far - near)
     /// m[3, 2] == -(far * near) / (far - near)
     /// @endcode
+    ///
     /// where the matrix entries are indexed in column-major order. The input 
     /// parameters satisfy the following pre-conditions to generate a valid 
     /// perspective projection matrix.
@@ -261,7 +289,7 @@ namespace glm_metal {
 
     /// @brief Construct a new perspective projection transformation mapping from 
     /// an eye space with a right-handed coordinate system to a clip space with a 
-    /// left-handed coordinate coordinate system compatible with Metal's normalized 
+    /// left-handed coordinate system compatible with Metal's normalized 
     /// device coordinates.
     ///
     /// @details The source eye space coordinate system is a right-handed coordinate 
@@ -275,18 +303,21 @@ namespace glm_metal {
     /// @li The clip space `x-axis` faces right.
     /// @li The clip space `y-axis` faces up.
     /// @li The clip space `z-axis` faces the camera forward direction.
-    /// In particular, we map the eye space `z-axis` to the clip space `z-axis` by
-    /// changing the sign of the eye space `z` coordinate. The transformation maps 
-    /// the eye space frustum volume contained in `[left, right] x [bottom, top] x [-far, -near]` 
-    /// to the normalized device coordinates `[-1, -1] x [-1, 1] x [0, 1]`. The projection
-    /// matrix is given by
+    /// The transformation maps the eye space frustum volume contained in 
+    /// `[left, right] x [bottom, top] x [-far, -near]` to the clip space that maps to 
+    /// the normalized device coordinates `[-1, -1] x [-1, 1] x [0, 1]`.
+    ///
+    /// The projection matrix is given by
+    ///
     /// @code{.unparsed}
     /// [ m[0, 0]  0         m[2, 0]  0       ]
     /// [ 0        m[1, 1]   m[2, 1]  0       ]
     /// [ 0        0         m[2, 2]  m[3, 2] ]
     /// [ 0        0        -1        0       ]
     /// @endcode
+    ///
     /// where
+    ///
     /// @code{.unparsed}
     /// m[0, 0] ==  2 * near / (right - left)
     /// m[2, 0] ==  (right + left) / (right - left)
@@ -295,6 +326,7 @@ namespace glm_metal {
     /// m[2, 2] == -far / (far - near)
     /// m[3, 2] == -(far * near) / (far - near)
     /// @endcode
+    ///
     /// where the matrix entries are indexed in column-major order. The input 
     /// parameters satisfy the following pre-conditions to generate a valid 
     /// perspective projection matrix.
@@ -323,7 +355,7 @@ namespace glm_metal {
 
     /// @brief Construct a new perspective projection transformation mapping from 
     /// an eye space with a left-handed coordinate system to a clip space with a 
-    /// left-handed coordinate coordinate system compatible with Metal's normalized 
+    /// left-handed coordinate system compatible with Metal's normalized 
     /// device coordinates.
     ///
     /// @details The source eye space coordinate system is a left-handed coordinate 
@@ -336,16 +368,22 @@ namespace glm_metal {
     /// @li The clip space `x-axis` faces right.
     /// @li The clip space `y-axis` faces up.
     /// @li The clip space `z-axis` faces the camera forward direction.
-    /// The transformation maps the eye space volume 
-    /// `[left, right] x [bottom, top] x [near, far]` to the normalized device coordinates
-    /// `[-1, -1] x [-1, 1] x [0, 1]`. The projection matrix is given by
+    /// The transformation maps the eye space frustum volume contained in
+    /// `[left, right] x [bottom, top] x [near, far]` to the clip space that maps to
+    /// the normalized device coordinates `[-1, -1] x [-1, 1] x [0, 1]` under
+    /// division by the `w-component`. 
+    ///
+    /// The projection matrix is given by
+    ///
     /// @code{.unparsed}
     /// [ m[0, 0]  0        m[2, 0]  0       ]
     /// [ 0        m[1, 1]  m[2, 1]  0       ]
     /// [ 0        0        m[2, 2]  m[3, 2] ]
     /// [ 0        0        1        0       ]
     /// @endcode
+    ///
     /// where
+    ///
     /// @code{.unparsed}
     /// m[0, 0] ==  2 * near / (right - left)
     /// m[2, 0] == -(right + left) / (right - left)
@@ -354,6 +392,7 @@ namespace glm_metal {
     /// m[2, 2] ==  far / (far - near)
     /// m[3, 2] == -(far * near) / (far - near)
     /// @endcode
+    ///
     /// where the matrix entries are indexed in column-major order. The input 
     /// parameters satisfy the following pre-conditions to generate a valid 
     /// perspective projection matrix.
